@@ -6,6 +6,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import { EventsManager } from './EventsManager/Manager';
 import { RegisterEvent, LoginEvent, ResetPasswordEvent, SendResetEmailEvent } from './EventsManager/Events';
+import { getUserByEmail, getUserByUsername } from './utils';
 
 // 数据库初始化
 // 定义User类型
@@ -17,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const httpServer = createServer(app);
-const io = new Server(httpServer, { cors: { origin: '*' } });
+const io = new Server(httpServer, { cors: { origin: '*' }, path: '/ws' });
 
 const eventsManager = new EventsManager();
 eventsManager.register(new RegisterEvent());
@@ -25,24 +26,19 @@ eventsManager.register(new LoginEvent());
 eventsManager.register(new ResetPasswordEvent());
 eventsManager.register(new SendResetEmailEvent());
 
-// 工具函数
-async function getUserByEmail(email: string) {
-    try {
-        const user = await db.get(`user:${email}`);
-        return user;
-    } catch (err) {
-        return null;
-    }
-}
-
 // Socket.io 事件
 io.on('connection', (socket) => {
+    console.log(`新连接: socket.id=${socket.id}, 时间=${new Date().toISOString()}`);
     socket.onAny(async (eventName, data, callback) => {
-        await eventsManager.handle(eventName, data, callback, { getUserByEmail, db });
+        await eventsManager.handle(eventName, data, callback, {
+            getUserByEmail: (email: string) => getUserByEmail(db, email),
+            getUserByUsername: (username: string) => getUserByUsername(db, username),
+            db
+        });
     });
 });
 
-const PORT = 3000;
+const PORT = 1453;
 httpServer.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 }); 

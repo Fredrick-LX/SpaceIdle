@@ -1,6 +1,11 @@
 {
-	"dependencies": {
-		"socket.io": "^4.8.1",
-		"socket.io-client": "^4.8.1"
-	}
+    "scripts": {
+        "start_client": "cd ./space-idle-cilent && pnpm run dev",
+        "start_server": "cd ./space-idle-server && pnpm run start"
+    },
+    "dependencies": {
+        "md5-ts": "^0.1.6",
+        "socket.io": "^4.8.1",
+        "socket.io-client": "^4.8.1"
+    }
 }

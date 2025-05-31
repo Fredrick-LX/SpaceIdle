@@ -11,7 +11,7 @@ export class LoginEvent extends Event {
             return callback({ code: 1, message: '用户名或密码不能为空' });
         }
         // 假设有getUserByEmail方法
-        const user = await context.getUserByEmail(username);
+        const user = await context.getUserByUsername(username);
         if (!user || user.password !== password) {
             return callback({ code: 2, message: '用户名或密码错误' });
         }

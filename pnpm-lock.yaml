@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      md5-ts:
+        specifier: ^0.1.6
+        version: 0.1.6
       socket.io:
         specifier: ^4.8.1
         version: 4.8.1
@@ -61,6 +64,9 @@ packages:
   engine.io@6.6.4:
     resolution: {integrity: sha512-ZCkIjSYNDyGn0R6ewHDtXgns/Zre/NT6Agvq1/WobF7JXgFff4SeDroKiCO3fNJreU9YG429Sc81o4w5ok/W5g==}
     engines: {node: '>=10.2.0'}
+
+  md5-ts@0.1.6:
+    resolution: {integrity: sha512-xGl3IVril2ljBTTrSszfX7QDBzK9G7NBeFAMOBTB8oGlP3l90IRL4NEey65TQk/CuXTiw2qM28NWU2LiZIGOrg==}
 
   mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
@@ -178,6 +184,8 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
+
+  md5-ts@0.1.6: {}
 
   mime-db@1.52.0: {}
 
