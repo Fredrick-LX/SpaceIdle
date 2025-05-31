@@ -1,11 +1,24 @@
 {
+    "name": "space-idle",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "space-idle-cilent",
+        "space-idle-server"
+    ],
     "scripts": {
-        "start_client": "cd ./space-idle-cilent && pnpm run dev",
-        "start_server": "cd ./space-idle-server && pnpm run start"
+        "cilent:dev": "pnpm --filter space-idle-cilent dev",
+        "cilent:build": "pnpm --filter space-idle-cilent build",
+        "cilent:preview": "pnpm --filter space-idle-cilent preview",
+        "server:dev": "pnpm --filter space-idle-server dev",
+        "server:build": "pnpm --filter space-idle-server build"
     },
     "dependencies": {
         "md5-ts": "^0.1.6",
         "socket.io": "^4.8.1",
         "socket.io-client": "^4.8.1"
+    },
+    "devDependencies": {
+        "@types/webpack-env": "^1.18.8"
     }
 }

@@ -1,7 +1,11 @@
 {
+    "name": "space-idle-server",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
     "scripts": {
         "build": "tsc",
-        "start": "ts-node src/index.ts"
+        "dev": "ts-node src/index.ts"
     },
     "devDependencies": {
         "@types/body-parser": "^1.19.5",
